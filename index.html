@@ -400,7 +400,7 @@ const ingredientLibrary = {
           { ingredient: "salt", amount: 1 },
           { ingredient: "blackPepper", amount: 1 },
           { ingredient: "freshBasil", amount: 0.5 },
-          { ingredient: "chili", amount: 0.25 }
+          { ingredient: "freshChili", amount: 0.25 }
         ],
              displayIngredients: [
  "1 sipuli",
@@ -440,13 +440,13 @@ const ingredientLibrary = {
           { ingredient: "paprikaPowder", amount: 0.1 },
           { ingredient: "tomatoPaste", amount: 2 },
           { ingredient: "vegetableStockCube", amount: 2 },
-          { ingredient: "redLentil", amount: 1 },
+          { ingredient: "redLentils", amount: 1 },
           { ingredient: "oatsCream", amount: 2.5 },
           { ingredient: "salt", amount: 0.1 },
           { ingredient: "blackPepper", amount: 0.1 },
           { ingredient: "lemonJuice", amount: 0.5 },
           { ingredient: "freshBasil", amount: 0.5 },
-          { ingredient: "freshParsley", amount: 0.5 },
+          { ingredient: "leafParsley", amount: 0.5 },
            { ingredient: "plantbasedParmesan", amount: 0.5 },
            { ingredient: "chiliPowder", amount: 0.15 },
 
@@ -625,6 +625,7 @@ const ingredientLibrary = {
 
     renderRecipes();
     updatePreview();
+    populateRecipeViewer();
 
     function populateRecipeViewer() {
   const select = document.getElementById("recipeViewer");
@@ -678,6 +679,7 @@ function showRecipe(recipeId) {
 </body>
 
 </html>
+
 
 
 
