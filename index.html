@@ -213,7 +213,7 @@
     <header class="header">
       <h1>Shopping Recipe Helper</h1>
       <p class="subtitle">
-        Select recipes, copy the merged ingredient list, and paste it into Google Keep.
+        Sivusto on tarkoitettu ei kaupalliseen, henkilökohtaiseen käyttöön. Jos eksyt sivustolle vahingossa, löydät alkuperäisen reseptin luojan tiedot valmistusohjeen lopusta.
       </p>
     </header>
 
@@ -275,17 +275,22 @@ const ingredientLibrary = {
   potato:                { name: "Peruna", unit: "g", section: 1 },
   onion:                 { name: "Sipuli", unit: "kpl", section: 1 },
   garlic:                { name: "Valkosipuli", unit: "kynsi", section: 1 },
-  freshChoriander:       { name: "Korianteri", unit: "dl", section: 1 },
-  freshBasil:         { name: "Tuore basilika", unit: "pkt", section: 1 },
-  leafParsley:           { name: "Lehtipersilja", unit: "pkt", section: 1 },
-  freshChili:           { name: "Tuore chili", unit: "kpl", section: 1 },
+  freshChoriander:       { name: "Korianteri", unit: "reseptiin", section: 1 },
+  freshBasil:         { name: "Tuore basilika", unit: "reseptiin", section: 1 },
+  leafParsley:           { name: "Lehtipersilja", unit: "reseptiin", section: 1 },
+  freshChili:           { name: "Tuore chili", unit: "reseptiin", section: 1 },
   
 
   // SECTION 2
   oatsCream:             { name: "Kaurakerma", unit: "dl", section: 2 },
-  milk:                  { name: "Milk", unit: "dl", section: 2 },
+  milk:                  { name: "Maito", unit: "dl", section: 2 },
   cheese:                { name: "Juusto", unit: "pkt", section: 2 },
-  plantbasedParmesan:    { name: "Kasvipohjainen parmesaani", unit: "pkt", section: 2 },
+  plantbasedParmesan:    { name: "Kasvipohjainen parmesaani", unit: "reseptiin", section: 2 },
+  butter:                  { name: "Voi", unit: "dl", section: 2 }, 
+  turmericPowder:                  { name: "Kurkumajauhe", unit: "reseptiin", section: 2 },
+  gingerPowder:                  { name: "Inkiväärijauhe", unit: "reseptiin", section: 2 },
+  cajunSpice:                  { name: "Cajunmauste", unit: "reseptiin", section: 2 },
+  seaSalt:                  { name: "Merisuola", unit: "reseptiin", section: 2 },
 
   // SECTION 3
   lentils:               { name: "Linssit", unit: "pkt", section: 3 },
@@ -294,10 +299,12 @@ const ingredientLibrary = {
   pasta:                 { name: "Pasta", unit: "g", section: 3 },
   oil:                   { name: "Öljy", unit: "dl", section: 3 },
   soyMince:              { name: "Soijarouhe", unit: "dl", section: 3 },
+  coconutCreamOrWhispCream:              { name: "Kookosmaito tai kuohukerma", unit: "dl", section: 3 },
   soySauce:              { name: "Soijakastike", unit: "dl", section: 3 },
   tomatoPuree:           { name: "Tomaattipyree", unit: "dl", section: 3 },
   cannedBeans:           { name: "Säilykepapu", unit: "pkt", section: 3 },
   redLentils:            { name: "Punainen linssi", unit: "pkt", section: 3 },
+  dryRedLentils:         { name: "Kuiva punainen linssi", unit: "dl", section: 3 },
   vegetableStockCube:    { name: "Kasvisliemikuutio", unit: "kpl", section: 3 },
   redWineVinegar:        { name: "Punaviinietikka", unit: "dl", section: 3 },
   sunDriedTomatoOiled:   { name: "Aurinkokuivattu tomaatti, öljyssä", unit: "g", section: 3 },
@@ -309,16 +316,16 @@ const ingredientLibrary = {
 
   // SECTION 4
 
-  salt:                  { name: "Suola", unit: "dl", section: 4 },
-  blackPepper:           { name: "Mustapippuri", unit: "dl", section: 4 },
-  chiliPowder:           { name: "Kuiva chili", unit: "dl", section: 4 },
-  paprikaPowder:         { name: "Paprikajauhe", unit: "dl", section: 4 },
-  smokedPaprikaPowder:   { name: "Savupaprikajauhe", unit: "dl", section: 4 },
-  driedOregano:          { name: "Kuivattu oregano", unit: "dl", section: 4 },
-  herbesDeProvence:      { name: "Herbes de Provence", unit: "dl", section: 4 },
-  cheeseCumin:           { name: "Juustokumina", unit: "dl", section: 4 },
-  mincedChoriander:      { name: "Jauhettu korianteri", unit: "dl", section: 4 },
-  mincedMeatSeasoning:   { name: "Jauhelihamauste", unit: "dl", section: 4 }
+  salt:                  { name: "Suola", unit: "reseptiin", section: 4 },
+  blackPepper:           { name: "Mustapippuri", unit: "reseptiin", section: 4 },
+  chiliPowder:           { name: "Kuiva chili", unit: "reseptiin", section: 4 },
+  paprikaPowder:         { name: "Paprikajauhe", unit: "reseptiin", section: 4 },
+  smokedPaprikaPowder:   { name: "Savupaprikajauhe", unit: "reseptiin", section: 4 },
+  driedOregano:          { name: "Kuivattu oregano", unit: "reseptiin", section: 4 },
+  herbesDeProvence:      { name: "Herbes de Provence", unit: "reseptiin", section: 4 },
+  cheeseCumin:           { name: "Juustokumina", unit: "reseptiin", section: 4 },
+  mincedChoriander:      { name: "Jauhettu korianteri", unit: "reseptiin", section: 4 },
+  mincedMeatSeasoning:   { name: "Jauhelihamauste", unit: "reseptiin", section: 4 }
 };
 
     /*
@@ -349,10 +356,10 @@ const ingredientLibrary = {
           { ingredient: "oil", amount: 0.45 },
           { ingredient: "soyMince", amount: 2 },
           { ingredient: "soySauce", amount: 0.15 },
-          { ingredient: "mincedMeatSeasoning", amount: 0.1 },
+          { ingredient: "mincedMeatSeasoning", amount: 1 },
           { ingredient: "tomatoPuree", amount: 0.6 },
-          { ingredient: "paprikaPowder", amount: 0.1 },
-          { ingredient: "driedOregano", amount: 0.1 },
+          { ingredient: "paprikaPowder", amount: 1 },
+          { ingredient: "driedOregano", amount: 1 },
           { ingredient: "cannedBeans", amount: 1 },
           { ingredient: "vegetableStockCube", amount: 2 },
           { ingredient: "oatsCream", amount: 2 },
@@ -401,17 +408,17 @@ const ingredientLibrary = {
           { ingredient: "oil", amount: 0.45 },
           { ingredient: "tomatoPuree", amount: 0.15 },
           { ingredient: "redWineVinegar", amount: 0.15 },
-          { ingredient: "cheeseCumin", amount: 0.15 },
-          { ingredient: "mincedChoriander", amount: 0.1 },
-          { ingredient: "smokedPaprikaPowder", amount: 0.1 },
-          { ingredient: "driedOregano", amount: 0.5 },
+          { ingredient: "cheeseCumin", amount: 1 },
+          { ingredient: "mincedChoriander", amount: 1 },
+          { ingredient: "smokedPaprikaPowder", amount: 1 },
+          { ingredient: "driedOregano", amount: 1 },
           { ingredient: "tomatoPaste", amount: 2 },
           { ingredient: "kidneyBeans", amount: 2 },
           { ingredient: "vegetableStockCube", amount: 2 },
           { ingredient: "salt", amount: 1 },
           { ingredient: "blackPepper", amount: 1 },
-          { ingredient: "freshBasil", amount: 0.5 },
-          { ingredient: "freshChili", amount: 0.25 }
+          { ingredient: "freshBasil", amount: 1 },
+          { ingredient: "freshChili", amount: 1 }
         ],
              displayIngredients: [
  "1 sipuli",
@@ -451,19 +458,19 @@ const ingredientLibrary = {
           { ingredient: "garlic", amount: 4 },
           { ingredient: "onion", amount: 1 },
           { ingredient: "soySauce", amount: 0.3 },
-          { ingredient: "herbesDeProvence", amount: 0.15 },
-          { ingredient: "paprikaPowder", amount: 0.1 },
+          { ingredient: "herbesDeProvence", amount: 1 },
+          { ingredient: "paprikaPowder", amount: 1 },
           { ingredient: "tomatoPaste", amount: 2 },
           { ingredient: "vegetableStockCube", amount: 2 },
           { ingredient: "redLentils", amount: 1 },
           { ingredient: "oatsCream", amount: 2.5 },
-          { ingredient: "salt", amount: 0.1 },
-          { ingredient: "blackPepper", amount: 0.1 },
+          { ingredient: "salt", amount: 1 },
+          { ingredient: "blackPepper", amount: 1 },
           { ingredient: "lemonJuice", amount: 0.5 },
-          { ingredient: "freshBasil", amount: 0.5 },
-          { ingredient: "leafParsley", amount: 0.5 },
-           { ingredient: "plantbasedParmesan", amount: 0.5 },
-           { ingredient: "chiliPowder", amount: 0.15 },
+          { ingredient: "freshBasil", amount: 1 },
+          { ingredient: "leafParsley", amount: 1 },
+           { ingredient: "plantbasedParmesan", amount: 1 },
+           { ingredient: "chiliPowder", amount: 1 },
 
         ],
         displayIngredients: [
@@ -495,13 +502,43 @@ const ingredientLibrary = {
               ]
       },
       {
-        id: "tortilla_mix",
-        name: "Tortilla Mix",
+        id: "worlds_best_lentils_soup",
+        name: "Maailman paras linssikeitto",
+        source: {
+          author: "Hannamari Rahkonen",
+  url: "https://hannamarirahkonen.fi/reseptit/maailman-paras-linssikeitto/"
+},
         ingredients: [
-          { ingredient: "tortillas", amount: 1 },
-          { ingredient: "paprika", amount: 150 },
-          { ingredient: "beans", amount: 1 },
-          { ingredient: "cheese", amount: 200 }
+          { ingredient: "butter", amount: 1 },
+          { ingredient: "garlic", amount: 3 },
+          { ingredient: "onion", amount: 2 },
+          { ingredient: "turmericPowder", amount: 1 },
+          { ingredient: "gingerPowder", amount: 1 },
+          { ingredient: "cajunSpice", amount: 1 },
+          { ingredient: "seaSalt", amount: 1 },
+          { ingredient: "dryRedLentils", amount: 3 },
+          { ingredient: "tomatoPaste", amount: 4 },
+          { ingredient: "coconutCreamOrWhispCream", amount: 2 }
+        ],
+        displayIngredients: [
+"2 rkl voita",
+"3 valkosipulinkynttä",
+"2 pientä sipulia",
+"2 tl kurkumajauhetta",
+"1 tl inkiväärijauhetta",
+"½ tl cajunmaustetta",
+"1 ½ rkl merisuolaa (tasainen mitta)",
+"3 dl punaisia linssejä kuivana",
+"800 g tomaattimurskaa (Mutti)",
+"1,1 litraa vettä",
+"2 dl kookosmaitoa tai kuohukermaa"
+        ],
+        instructions: [
+"Mittaa kuivat linssit siivilään ja huuhdo huolellisesti kylmällä vedellä, kunnes linssien läpi tuleva vesi ei ole enää sameaa.",
+"Kuori sipulit ja valkosipuli, leikkaa pieneksi silpuksi terävällä veitsellä. Mittaa sipulisilppu, jauhemaiset mausteet ja voi isoon kattilaan. Kuullota sipuli-mausteseosta miedolla lämmöllä, kunnes ne ovat pehmeitä.",
+"Lisää pehmeän sipuliseoksen joukkoon tomaattimurska ja vesi. Anna seoksen kiehua muutama minuutti ja lisää joukkoon punaiset linssit. Sekoita ja laita kansi kattilan päälle. ",
+"Anna keiton kiehua noin 30 minuutin ajan miedolla lämmöllä ja lisää keittoon lopuksi kookosmaidon paksu osa. Anna keiton hautua kannen alla noin viiden minuutin ajan ennen kuin tarjoilua.",
+"Vinkki: Suola pyöristää ja korostaa keiton kaikkia makuja. Mikäli keitto maistuu valjulta, lisää merisuolaa asteittain, kunnes maku on kohdallaan."
         ]
       }
     ];
@@ -701,6 +738,7 @@ function showRecipe(recipeId) {
 </body>
 
 </html>
+
 
 
 
