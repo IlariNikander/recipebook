@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopping Recipe Helper</title>
+  <meta name="theme-color" content="#1f2937" />
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #d1d5db;
+      --primary: #1f2937;
+      --primary-hover: #111827;
+      --secondary: #e5e7eb;
+      --secondary-hover: #d1d5db;
+      --success: #065f46;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .header {
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--bg);
+      padding: 12px 0;
+    }
+
+    .toolbar-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    button {
+      appearance: none;
+      border: none;
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
+    .primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .primary:hover {
+      background: var(--primary-hover);
+    }
+
+    .secondary {
+      background: var(--secondary);
+      color: var(--text);
+    }
+
+    .secondary:hover {
+      background: var(--secondary-hover);
+    }
+
+    .status {
+      min-height: 22px;
+      margin: 10px 2px 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .layout {
+      display: grid;
+      gap: 16px;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    .recipes {
+      display: grid;
+      gap: 12px;
+    }
+
+    .recipe-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .recipe-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .recipe-label input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      margin-top: 2px;
+      flex: 0 0 auto;
+    }
+
+    .recipe-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .recipe-meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .preview {
+      background: #f9fafb;
+      border: 1px dashed var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      min-height: 120px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 16px;
+    }
+
+    .small-note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-note {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 560px) {
+      .toolbar-inner {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .recipe-name {
+        font-size: 17px;
+      }
+
+      .preview {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Shopping Recipe Helper</h1>
+      <p class="subtitle">
+        Select recipes, copy the merged ingredient list, and paste it into Google Keep.
+      </p>
+    </header>
+
+    <div class="toolbar">
+      <div class="toolbar-inner">
+        <button id="copyBtn" class="primary">Copy shopping list</button>
+        <button id="clearBtn" class="secondary">Clear selection</button>
+      </div>
+      <div id="status" class="status"></div>
+    </div>
+
+    <div class="layout">
+      <section class="panel">
+        <h2>Recipes</h2>
+        <div id="recipes" class="recipes"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Preview</h2>
+        <div id="preview" class="preview">(nothing selected)</div>
+        <div class="small-note">
+          Sorted by section first, then alphabetically. Duplicate ingredients are merged automatically.
+        </div>
+      </section>
+    </div>
+
+    <div class="footer-note">
+      Edit the ingredient library and recipes directly in this file.
+    </div>
+  </div>
+
+  <script>
+    /*
+      INGREDIENT LIBRARY
+
+      Define each item once here:
+      - name: shown in output
+      - unit: shown after amount
+      - section: numeric sort order in shop
+
+      Recipes below must use these exact keys.
+    */
+    const ingredientLibrary = {
+      paprika:      { name: "Paprika", unit: "g",   section: 1 },
+      potato:       { name: "Potato", unit: "g",    section: 1 },
+      onion:        { name: "Onion", unit: "g",     section: 1 },
+      garlic:       { name: "Garlic", unit: "g",    section: 1 },
+
+      cream:        { name: "Cream", unit: "dl",    section: 2 },
+      milk:         { name: "Milk", unit: "dl",     section: 2 },
+      cheese:       { name: "Cheese", unit: "g",    section: 2 },
+
+      lentils:      { name: "Lentils", unit: "pkt", section: 3 },
+      soybeans:     { name: "Soybeans", unit: "pkt", section: 3 },
+      rice:         { name: "Rice", unit: "g",      section: 3 },
+      pasta:        { name: "Pasta", unit: "g",     section: 3 },
+
+      tomatoSauce:  { name: "Tomato sauce", unit: "pkt", section: 4 },
+      tortillas:    { name: "Tortillas", unit: "pkt", section: 4 },
+      beans:        { name: "Beans", unit: "pkt",   section: 4 }
+    };
+
+    /*
+      RECIPES
+
+      Each recipe uses:
+      - id: unique ID
+      - name: shown in UI
+      - ingredients: array of
+          { ingredient: "<libraryKey>", amount: <number> }
+
+      Example:
+      { ingredient: "paprika", amount: 200 }
+    */
+    const recipes = [
+      {
+        id: "paprika_pasta",
+        name: "Paprika Pasta",
+        ingredients: [
+          { ingredient: "paprika", amount: 200 },
+          { ingredient: "pasta", amount: 400 },
+          { ingredient: "tomatoSauce", amount: 1 },
+          { ingredient: "garlic", amount: 20 }
+        ]
+      },
+      {
+        id: "lentil_pan",
+        name: "Lentil Pan",
+        ingredients: [
+          { ingredient: "paprika", amount: 300 },
+          { ingredient: "lentils", amount: 1 },
+          { ingredient: "soybeans", amount: 1 },
+          { ingredient: "onion", amount: 150 }
+        ]
+      },
+      {
+        id: "potato_soup",
+        name: "Potato Soup",
+        ingredients: [
+          { ingredient: "potato", amount: 500 },
+          { ingredient: "cream", amount: 2.5 },
+          { ingredient: "garlic", amount: 10 },
+          { ingredient: "onion", amount: 100 }
+        ]
+      },
+      {
+        id: "tortilla_mix",
+        name: "Tortilla Mix",
+        ingredients: [
+          { ingredient: "tortillas", amount: 1 },
+          { ingredient: "paprika", amount: 150 },
+          { ingredient: "beans", amount: 1 },
+          { ingredient: "cheese", amount: 200 }
+        ]
+      }
+    ];
+
+    function formatAmount(amount) {
+      if (Number.isInteger(amount)) {
+        return String(amount);
+      }
+      return String(parseFloat(amount.toFixed(2)));
+    }
+
+    function getSelectedRecipeIds() {
+      return Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+        .map((input) => input.value);
+    }
+
+    function getSelectedRecipes() {
+      const selectedIds = getSelectedRecipeIds();
+      return recipes.filter((recipe) => selectedIds.includes(recipe.id));
+    }
+
+    function mergeIngredients(selectedRecipes) {
+      const totals = new Map();
+
+      for (const recipe of selectedRecipes) {
+        for (const entry of recipe.ingredients) {
+          const base = ingredientLibrary[entry.ingredient];
+
+          if (!base) {
+            console.warn("Missing ingredient in library:", entry.ingredient);
+            continue;
+          }
+
+          const key = entry.ingredient;
+
+          if (!totals.has(key)) {
+            totals.set(key, {
+              key,
+              name: base.name,
+              unit: base.unit,
+              section: Number(base.section),
+              amount: Number(entry.amount)
+            });
+          } else {
+            totals.get(key).amount += Number(entry.amount);
+          }
+        }
+      }
+
+      return Array.from(totals.values()).sort((a, b) => {
+        if (a.section !== b.section) {
+          return a.section - b.section;
+        }
+        return a.name.localeCompare(b.name);
+      });
+    }
+
+    function buildOutput(items) {
+      return items
+        .map((item) => `${item.name} ${formatAmount(item.amount)} ${item.unit}`)
+        .join("\n");
+    }
+
+    function setStatus(message, isSuccess = false) {
+      const el = document.getElementById("status");
+      el.textContent = message;
+      el.style.color = isSuccess ? "var(--success)" : "var(--muted)";
+    }
+
+    function updatePreview() {
+      const selectedRecipes = getSelectedRecipes();
+      const merged = mergeIngredients(selectedRecipes);
+      const output = buildOutput(merged);
+
+      document.getElementById("preview").textContent = output || "(nothing selected)";
+    }
+
+    function renderRecipes() {
+      const container = document.getElementById("recipes");
+      container.innerHTML = "";
+
+      for (const recipe of recipes) {
+        const ingredientCount = recipe.ingredients.length;
+
+        const card = document.createElement("div");
+        card.className = "recipe-card";
+
+        card.innerHTML = `
+          <label class="recipe-label">
+            <input type="checkbox" value="${recipe.id}" />
+            <div>
+              <div class="recipe-name">${recipe.name}</div>
+              <div class="recipe-meta">${ingredientCount} ingredient${ingredientCount === 1 ? "" : "s"}</div>
+            </div>
+          </label>
+        `;
+
+        container.appendChild(card);
+      }
+
+      container.addEventListener("change", () => {
+        setStatus("");
+        updatePreview();
+      });
+    }
+
+    async function copyShoppingList() {
+      const selectedRecipes = getSelectedRecipes();
+      const merged = mergeIngredients(selectedRecipes);
+      const output = buildOutput(merged);
+
+      if (!output) {
+        setStatus("Select at least one recipe first.");
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(output);
+        setStatus("Shopping list copied to clipboard.", true);
+      } catch (error) {
+        console.error(error);
+        setStatus("Clipboard copy failed. On some browsers this requires HTTPS.");
+      }
+    }
+
+    function clearSelection() {
+      document.querySelectorAll('input[type="checkbox"]').forEach((input) => {
+        input.checked = false;
+      });
+      setStatus("");
+      updatePreview();
+    }
+
+    document.getElementById("copyBtn").addEventListener("click", copyShoppingList);
+    document.getElementById("clearBtn").addEventListener("click", clearSelection);
+
+    renderRecipes();
+    updatePreview();
+  </script>
+</body>
+</html>
