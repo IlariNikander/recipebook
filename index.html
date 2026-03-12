@@ -240,6 +240,18 @@
       </section>
     </div>
 
+    <div class="panel">
+  <h2>View recipe</h2>
+
+  <select id="recipeViewer"></select>
+
+  <h3>Ainekset</h3>
+  <ul id="recipeIngredients"></ul>
+
+  <h3>Valmistus</h3>
+  <ol id="recipeInstructions"></ol>
+</div>
+
     <div class="footer-note">
       Edit the ingredient library and recipes directly in this file.
     </div>
@@ -341,8 +353,33 @@ const ingredientLibrary = {
           { ingredient: "oatsCream", amount: 2 },
           { ingredient: "salt", amount: 1 },
           { ingredient: "blackPepper", amount: 1 }
+        ],
+        displayIngredients: [
+"1 sipuli",
+"4 valkosipulinkynttä",
+"500 g perunoita",
+"1 iso paprika (n. 300 g)",
+"3 rkl öljyä",
+"2 dl soijarouhetta",
+"1 rkl soijakastiketta ",
+"2 tl jauhelihamaustetta",
+"1,2 l vettä",
+"4 rkl tomaattipyrettä",
+"2 tl paprikajauhetta",
+"2 tl kuivattua oreganoa ",
+"1 prk säilykepapuja",
+"2 kasvisliemikuutiota",
+"2 dl kaurakermaa",
+"suolaa, mustapippuria",
+"(chiliä, korianteria)"],
 
-        ]
+      instructions: [
+"1. Kuori ja hienonna sipuli ja valkosipulinkynnet. Kuori ja pilko perunat. Halkaisee paprika, poista kanta ja siemenet, paloittele.",
+"2. Kuumenna öljy kattilassa ja kuullota sipulia muutama minuutti. Lisää valkosipuli ja soijarouhe, jatka paistamista hetken aikaa. Mausta soijakastikkeella ja jauhelihamausteella. Lisää kaksia desiä vettä vähän kerrallaan ja anna imeytyä soijarouheeseen. ",
+"3. Lisää perunat kattilaan. Sekoita joukkoon tomaattipyre, paprikajauhe ja oregano. Paista hetki. Valuta pavut ja lisää kattilaan. Lisää litra vettä ja kasvisliemikuutiot. Kuumenna kiehuvaksi ja keitä, kunnes perunat ovat lähes kypsiä, palojen koosta riippuen n. 15 minuuttia.",
+"4. Lisää paprikat ja keitä sen aikaa, että perunat ovat kunnolla kypsiä. Sekoita joukkoon kaurakerma. Mausta suolalla ja mustapippurilla. Viimeistele halutessasi chilillä ja tuoreella korianterilla."
+          ]           
+          
       },
             {
         id: "kidney_bean_tomato_soup",
@@ -364,8 +401,31 @@ const ingredientLibrary = {
           { ingredient: "blackPepper", amount: 1 },
           { ingredient: "freshBasil", amount: 0.5 },
           { ingredient: "chili", amount: 0.25 }
-          
-        ]
+        ],
+             displayIngredients: [
+ "1 sipuli",
+"4 valkosipulinkynttä",
+"3 rkl öljyä ",
+"2 rkl tomaattipyrettä",
+"1 rkl punaviinietikka",
+"1 rkl juustokuminaa jauhettuna",
+"1/2 rkl korianteria jauhettuna ",
+"1/2 rkl savupaprikajauhetta",
+"1 tl kuivattua oreganoa",
+"500 g tomaattimurskaa",
+"2 prk kypsiä kidneypapuja (á 240 g, n. 7 dl)",
+"8 dl kasvislientä (esim. vettä ja 2 liemikuutiota)",
+"suolaa ja mustapippuria",
+"tuoretta basilikaa",
+"tarjoiluun kasvipohjaista majoneesia ja chiliä jossain muodossa"
+             ],
+              instructions: [
+                "1. Kuori ja hienonna sipuli ja valkosipulinkynnet.",
+"2. Kuumenna öljy kattilassa ja kuullota sipulia, kunnes se on läpikuultavaa. Lisää valkosipuli ja kuullota vielä hetki. Lisää sitten tomaattipyre, punaviinietikka, juustokumina, korianteri, savupaprika ja oregano. Paista hetki sekoitellen.",
+"3. Lisää tomaattimurska, huuhdellut kidneypavut ja kasvisliemi. Kuumenna kiehuvaksi ja keitä vähintään 20 minuuttia. ",
+"4. Soseuta keitto kokonaan tai osittain. Mausta oman maun mukaan suolalla ja mustapippurilla. Viimeistele tuoreella basilikalla.",
+"5. Tarjoile majoneesinokareen ja chilin kanssa."
+              ]
       },
       {
         id: "marry_me_lentil_soup",
@@ -390,7 +450,34 @@ const ingredientLibrary = {
            { ingredient: "plantbasedParmesan", amount: 0.5 },
            { ingredient: "chiliPowder", amount: 0.15 },
 
-        ]
+        ],
+        displayIngredients: [
+"1 sipuli",
+"4 valkosipulinkynttä",
+"100 g aurinkokuivattuja tomaatteja",
+"2-3 rkl öljyä (esim. aurinkokuivattujen tomaattien purkista)",
+"3 rkl tomaattipyrettä",
+"2 rkl soijakastiketta",
+"1 rkl kuivattuja yrttejä, esim. välimeren yrtit",
+"2 tl paprikajauhetta",
+"2 prk tomaattimurskaa (á 400-500 g)",
+"1 l vettä",
+"2 kasvisliemikuutiota",
+"3 dl punaisia linssejä",
+"2 ½ dl kasvipohjaista ruokakermaa, esim. kaurakermaa",
+"suolaa ja mustapippuria",
+"½ sitruunan mehu (n. 2-3 rkl)",
+"tuoretta lehtipersiljaa tai basilikaa",
+"kasvipohjaista parmesaania",
+"chilihiutaleita"
+        ],
+              instructions: [
+"1. Kuori ja hienonna sipuli ja valkosipulinkynnet. Suikaloi aurinkokuivatut tomaatit.",
+"2. Kuumenna öljy kattilassa ja kuullota sipulia 5-10 minuuttia. Lisää valkosipulit ja aurinkokuivatut tomaatit, jatka kuullottamista muutama minuutti. Sekoita joukkoon tomaattipyre, soijakastike, kuivatut yrtit ja paprikajauhe. Paista hetki.",
+"3. Lisää tomaattimurska, vesi ja kasvisliemikuutiot. Huuhtele linssit ja lisää joukkoon. Kuumenna kiehuvaksi ja anna hautua hiljalleen poreillen puolisen tuntia tai kunnes linssit ovat kypsiä.",
+"4. Lisää kerma ja mausta suolalla, pippurilla ja sitruunan mehulla. Halutessasi voit tässä kohtaa soseuttaa keiton.",
+"5. Tarjoile marry me linssikeitto hienonnetun lehtipersiljan (tai basilikan), kasvipohjaisen parmesaanin ja chilihiutaleiden kanssa."
+              ]
       },
       {
         id: "tortilla_mix",
@@ -538,6 +625,47 @@ const ingredientLibrary = {
 
     renderRecipes();
     updatePreview();
+
+    function populateRecipeViewer() {
+  const select = document.getElementById("recipeViewer");
+
+  recipes.forEach((recipe) => {
+    const option = document.createElement("option");
+    option.value = recipe.id;
+    option.textContent = recipe.name;
+    select.appendChild(option);
+  });
+
+  select.addEventListener("change", () => {
+    showRecipe(select.value);
+  });
+
+  if (recipes.length > 0) {
+    showRecipe(recipes[0].id);
+  }
+}
+
+function showRecipe(recipeId) {
+  const recipe = recipes.find(r => r.id === recipeId);
+
+  const ingredientList = document.getElementById("recipeIngredients");
+  const instructionList = document.getElementById("recipeInstructions");
+
+  ingredientList.innerHTML = "";
+  instructionList.innerHTML = "";
+
+  recipe.displayIngredients.forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    ingredientList.appendChild(li);
+  });
+
+  recipe.instructions.forEach((step) => {
+    const li = document.createElement("li");
+    li.textContent = step;
+    instructionList.appendChild(li);
+  });
+}
   </script>
   <script>
   if ("serviceWorker" in navigator) {
@@ -546,8 +674,10 @@ const ingredientLibrary = {
     });
   }
 </script>
+
 </body>
 
 </html>
+
 
 
