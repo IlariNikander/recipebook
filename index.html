@@ -263,8 +263,10 @@ const ingredientLibrary = {
   onion:                 { name: "Sipuli", unit: "kpl", section: 1 },
   garlic:                { name: "Valkosipuli", unit: "kynsi", section: 1 },
   freshChoriander:       { name: "Korianteri", unit: "dl", section: 1 },
-  freshBasilica:         { name: "Tuore basilika", unit: "pkt", section: 1 },
+  freshBasil:         { name: "Tuore basilika", unit: "pkt", section: 1 },
   leafParsley:           { name: "Lehtipersilja", unit: "pkt", section: 1 },
+  freshChili:           { name: "Tuore chili", unit: "kpl", section: 1 },
+  
 
   // SECTION 2
   oatsCream:             { name: "Kaurakerma", unit: "dl", section: 2 },
@@ -296,7 +298,7 @@ const ingredientLibrary = {
 
   salt:                  { name: "Suola", unit: "dl", section: 4 },
   blackPepper:           { name: "Mustapippuri", unit: "dl", section: 4 },
-  chili:                 { name: "Chili", unit: "dl", section: 4 },
+  chiliPowder:           { name: "Kuiva chili", unit: "dl", section: 4 },
   paprikaPowder:         { name: "Paprikajauhe", unit: "dl", section: 4 },
   smokedPaprikaPowder:   { name: "Savupaprikajauhe", unit: "dl", section: 4 },
   driedOregano:          { name: "Kuivattu oregano", unit: "dl", section: 4 },
@@ -342,24 +344,52 @@ const ingredientLibrary = {
 
         ]
       },
-      {
-        id: "lentil_pan",
-        name: "Lentil Pan",
+            {
+        id: "kidney_bean_tomato_soup",
+        name: "Kidneypapu-Tomaattikeitto",
         ingredients: [
-          { ingredient: "paprika", amount: 300 },
-          { ingredient: "lentils", amount: 1 },
-          { ingredient: "soybeans", amount: 1 },
-          { ingredient: "onion", amount: 150 }
+          { ingredient: "onion", amount: 1 },
+          { ingredient: "garlic", amount: 4 },
+          { ingredient: "oil", amount: 0.45 },
+          { ingredient: "tomatoPuree", amount: 0.15 },
+          { ingredient: "redWineVinegar", amount: 0.15 },
+          { ingredient: "cheeseCumin", amount: 0.15 },
+          { ingredient: "mincedChoriander", amount: 0.1 },
+          { ingredient: "smokedPaprikaPowder", amount: 0.1 },
+          { ingredient: "driedOregano", amount: 0.5 },
+          { ingredient: "tomatoPaste", amount: 500 },
+          { ingredient: "kidneyBeans", amount: 2 },
+          { ingredient: "vegetableStockCube", amount: 2 },
+          { ingredient: "salt", amount: 1 },
+          { ingredient: "blackPepper", amount: 1 },
+          { ingredient: "freshBasil", amount: 0.5 },
+          { ingredient: "chili", amount: 0.25 }
+          
         ]
       },
       {
-        id: "potato_soup",
-        name: "Potato Soup",
+        id: "marry_me_lentil_soup",
+        name: "Marry me linssikeitto",
         ingredients: [
-          { ingredient: "potato", amount: 500 },
-          { ingredient: "cream", amount: 2.5 },
-          { ingredient: "garlic", amount: 10 },
-          { ingredient: "onion", amount: 100 }
+          { ingredient: "sunDriedTomatoOiled", amount: 100 },
+          { ingredient: "tomatoPuree", amount: 0.45 },
+          { ingredient: "garlic", amount: 4 },
+          { ingredient: "onion", amount: 1 },
+          { ingredient: "soySauce", amount: 0.3 },
+          { ingredient: "herbesDeProvence", amount: 0.15 },
+          { ingredient: "paprikaPowder", amount: 0.1 },
+          { ingredient: "tomatoPaste", amount: 2 },
+          { ingredient: "vegetableStockCube", amount: 2 },
+          { ingredient: "redLentil", amount: 1 },
+          { ingredient: "oatsCream", amount: 2,5 },
+          { ingredient: "salt", amount: 0.1 },
+          { ingredient: "blackPepper", amount: 0.1 },
+          { ingredient: "lemonJuice", amount: 0.5 },
+          { ingredient: "freshBasil", amount: 0.5 },
+          { ingredient: "freshParsley", amount: 0.5 },
+           { ingredient: "plantbasedParmesan", amount: 0.5 },
+           { ingredient: "chiliPowder", amount: 0.15 },
+
         ]
       },
       {
@@ -519,4 +549,5 @@ const ingredientLibrary = {
 </body>
 
 </html>
+
 
