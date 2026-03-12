@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shopping Recipe Helper</title>
+  <title>Croisantin reseptikirja</title>
   <meta name="theme-color" content="#1f2937" />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#1f2937" />
@@ -256,25 +256,55 @@
 
       Recipes below must use these exact keys.
     */
-    const ingredientLibrary = {
-      paprika:      { name: "Paprika", unit: "g",   section: 1 },
-      potato:       { name: "Potato", unit: "g",    section: 1 },
-      onion:        { name: "Onion", unit: "g",     section: 1 },
-      garlic:       { name: "Garlic", unit: "g",    section: 1 },
+const ingredientLibrary = {
+  // SECTION 1
+  paprika:               { name: "Paprika", unit: "g", section: 1 },
+  potato:                { name: "Peruna", unit: "g", section: 1 },
+  onion:                 { name: "Sipuli", unit: "kpl", section: 1 },
+  garlic:                { name: "Valkosipuli", unit: "kynsi", section: 1 },
+  freshChoriander:       { name: "Korianteri", unit: "dl", section: 1 },
+  freshBasilica:         { name: "Tuore basilika", unit: "pkt", section: 1 },
+  leafParsley:           { name: "Lehtipersilja", unit: "pkt", section: 1 },
 
-      cream:        { name: "Cream", unit: "dl",    section: 2 },
-      milk:         { name: "Milk", unit: "dl",     section: 2 },
-      cheese:       { name: "Cheese", unit: "g",    section: 2 },
+  // SECTION 2
+  oatsCream:             { name: "Kaurakerma", unit: "dl", section: 2 },
+  milk:                  { name: "Milk", unit: "dl", section: 2 },
+  cheese:                { name: "Juusto", unit: "pkt", section: 2 },
+  plantbasedParmesan:    { name: "Kasvipohjainen parmesaani", unit: "pkt", section: 2 },
 
-      lentils:      { name: "Lentils", unit: "pkt", section: 3 },
-      soybeans:     { name: "Soybeans", unit: "pkt", section: 3 },
-      rice:         { name: "Rice", unit: "g",      section: 3 },
-      pasta:        { name: "Pasta", unit: "g",     section: 3 },
+  // SECTION 3
+  lentils:               { name: "Linssit", unit: "pkt", section: 3 },
+  soybeans:              { name: "Soijapavut", unit: "pkt", section: 3 },
+  rice:                  { name: "Riisi", unit: "g", section: 3 },
+  pasta:                 { name: "Pasta", unit: "g", section: 3 },
+  oil:                   { name: "Öljy", unit: "dl", section: 3 },
+  soyMince:              { name: "Soijarouhe", unit: "dl", section: 3 },
+  soySauce:              { name: "Soijakastike", unit: "dl", section: 3 },
+  tomatoPuree:           { name: "Tomaattipyree", unit: "dl", section: 3 },
+  cannedBeans:           { name: "Säilykepapu", unit: "pkt", section: 3 },
+  redLentils:            { name: "Punainen linssi", unit: "pkt", section: 3 },
+  vegetableStockCube:    { name: "Kasvisliemikuutio", unit: "kpl", section: 3 },
+  redWineVinegar:        { name: "Punaviinietikka", unit: "dl", section: 3 },
+  sunDriedTomatoOiled:   { name: "Aurinkokuivattu tomaatti, öljyssä", unit: "g", section: 3 },
+  lemonJuice:            { name: "Sitruunamehu", unit: "dl", section: 3 },
+  tomatoPaste:           { name: "Tomaattimurska", unit: "pkt", section: 3 },
+  whiteBeans:            { name: "Valkoiset pavut", unit: "pkt", section: 3 },
+  blackBeans:            { name: "Mustat pavut", unit: "pkt", section: 3 },
+  kidneyBeans:           { name: "Kidneypavut", unit: "pkt", section: 3 },
 
-      tomatoSauce:  { name: "Tomato sauce", unit: "pkt", section: 4 },
-      tortillas:    { name: "Tortillas", unit: "pkt", section: 4 },
-      beans:        { name: "Beans", unit: "pkt",   section: 4 }
-    };
+  // SECTION 4
+
+  salt:                  { name: "Suola", unit: "dl", section: 4 },
+  blackPepper:           { name: "Mustapippuri", unit: "dl", section: 4 },
+  chili:                 { name: "Chili", unit: "dl", section: 4 },
+  paprikaPowder:         { name: "Paprikajauhe", unit: "dl", section: 4 },
+  smokedPaprikaPowder:   { name: "Savupaprikajauhe", unit: "dl", section: 4 },
+  driedOregano:          { name: "Kuivattu oregano", unit: "dl", section: 4 },
+  herbesDeProvence:      { name: "Herbes de Provence", unit: "dl", section: 4 },
+  cheeseCumin:           { name: "Juustokumina", unit: "dl", section: 4 },
+  mincedChoriander:      { name: "Jauhettu korianteri", unit: "dl", section: 4 },
+  mincedMeatSeasoning:   { name: "Jauhelihamauste", unit: "dl", section: 4 }
+};
 
     /*
       RECIPES
@@ -291,12 +321,25 @@
     const recipes = [
       {
         id: "paprika_pasta",
-        name: "Paprika Pasta",
+        name: "Cowboy-Keitto",
         ingredients: [
-          { ingredient: "paprika", amount: 200 },
-          { ingredient: "pasta", amount: 400 },
-          { ingredient: "tomatoSauce", amount: 1 },
-          { ingredient: "garlic", amount: 20 }
+          { ingredient: "onion", amount: 1 },
+          { ingredient: "garlic", amount: 4 },
+          { ingredient: "potato", amount: 500 },
+          { ingredient: "paprika", amount: 300 },
+          { ingredient: "oil", amount: 0.45 },
+          { ingredient: "soyMince", amount: 2 },
+          { ingredient: "soySauce", amount: 0.15 },
+          { ingredient: "mincedMeatSeasoning", amount: 0.1 },
+          { ingredient: "tomatoPuree", amount: 0.6 },
+          { ingredient: "paprikaPowder", amount: 0.1 },
+          { ingredient: "driedOregano", amount: 0.1 },
+          { ingredient: "cannedBeans", amount: 1 },
+          { ingredient: "vegetableStockCube", amount: 2 },
+          { ingredient: "oatsCream", amount: 2 },
+          { ingredient: "salt", amount: 1 },
+          { ingredient: "blackPepper", amount: 1 }
+
         ]
       },
       {
@@ -476,3 +519,4 @@
 </body>
 
 </html>
+
