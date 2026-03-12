@@ -250,6 +250,7 @@
 
   <h3>Valmistus</h3>
   <ol id="recipeInstructions"></ol>
+  <p id="recipeSource" style="margin-top:12px; font-size:14px;"></p>
 </div>
 
     <div class="footer-note">
@@ -336,6 +337,10 @@ const ingredientLibrary = {
       {
         id: "paprika_pasta",
         name: "Cowboy-Keitto",
+        source: {
+  author: "Kasviskapina",
+  url: "https://www.kasviskapina.fi/reseptit/cowboy-keitto"
+},
         ingredients: [
           { ingredient: "onion", amount: 1 },
           { ingredient: "garlic", amount: 4 },
@@ -371,19 +376,25 @@ const ingredientLibrary = {
 "2 kasvisliemikuutiota",
 "2 dl kaurakermaa",
 "suolaa, mustapippuria",
-"(chiliä, korianteria)"],
+"(chiliä, korianteria)"
+        ],
 
       instructions: [
 "Kuori ja hienonna sipuli ja valkosipulinkynnet. Kuori ja pilko perunat. Halkaisee paprika, poista kanta ja siemenet, paloittele.",
 "Kuumenna öljy kattilassa ja kuullota sipulia muutama minuutti. Lisää valkosipuli ja soijarouhe, jatka paistamista hetken aikaa. Mausta soijakastikkeella ja jauhelihamausteella. Lisää kaksia desiä vettä vähän kerrallaan ja anna imeytyä soijarouheeseen. ",
 "Lisää perunat kattilaan. Sekoita joukkoon tomaattipyre, paprikajauhe ja oregano. Paista hetki. Valuta pavut ja lisää kattilaan. Lisää litra vettä ja kasvisliemikuutiot. Kuumenna kiehuvaksi ja keitä, kunnes perunat ovat lähes kypsiä, palojen koosta riippuen n. 15 minuuttia.",
 "Lisää paprikat ja keitä sen aikaa, että perunat ovat kunnolla kypsiä. Sekoita joukkoon kaurakerma. Mausta suolalla ja mustapippurilla. Viimeistele halutessasi chilillä ja tuoreella korianterilla."
-          ]           
+          ]
+        
           
       },
             {
         id: "kidney_bean_tomato_soup",
         name: "Kidneypapu-Tomaattikeitto",
+        source: {
+  author: "Kasviskapina",
+  url: "https://www.kasviskapina.fi/reseptit/kidneypapu-tomaattikeitto"
+},
         ingredients: [
           { ingredient: "onion", amount: 1 },
           { ingredient: "garlic", amount: 4 },
@@ -430,6 +441,10 @@ const ingredientLibrary = {
       {
         id: "marry_me_lentil_soup",
         name: "Marry me linssikeitto",
+        source: {
+          author: "Kasviskapina",
+  url: "https://www.kasviskapina.fi/reseptit/marry-me-linssikeitto"
+},
         ingredients: [
           { ingredient: "sunDriedTomatoOiled", amount: 100 },
           { ingredient: "tomatoPuree", amount: 0.45 },
@@ -651,21 +666,28 @@ function showRecipe(recipeId) {
 
   const ingredientList = document.getElementById("recipeIngredients");
   const instructionList = document.getElementById("recipeInstructions");
+  const sourceEl = document.getElementById("recipeSource");
 
   ingredientList.innerHTML = "";
   instructionList.innerHTML = "";
+  sourceEl.innerHTML = "";
 
-  recipe.displayIngredients.forEach((item) => {
+  (recipe.displayIngredients || []).forEach((item) => {
     const li = document.createElement("li");
     li.textContent = item;
     ingredientList.appendChild(li);
   });
 
-  recipe.instructions.forEach((step) => {
+  (recipe.instructions || []).forEach((step) => {
     const li = document.createElement("li");
     li.textContent = step;
     instructionList.appendChild(li);
   });
+
+  if (recipe.source) {
+    sourceEl.innerHTML =
+      `Original recipe: <a href="${recipe.source.url}" target="_blank">${recipe.source.author}</a>`;
+  }
 }
   </script>
   <script>
@@ -679,6 +701,7 @@ function showRecipe(recipeId) {
 </body>
 
 </html>
+
 
 
 
