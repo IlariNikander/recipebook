@@ -274,30 +274,34 @@ const ingredientLibrary = {
   paprika:               { name: "Paprika", unit: "g", section: 1 },
   potato:                { name: "Peruna", unit: "g", section: 1 },
   onion:                 { name: "Sipuli", unit: "kpl", section: 1 },
+  redOnion:                 { name: "Punasipuli", unit: "kpl", section: 1 },
   garlic:                { name: "Valkosipuli", unit: "kynsi", section: 1 },
   freshChoriander:       { name: "Korianteri", unit: "reseptiin", section: 1 },
   freshBasil:         { name: "Tuore basilika", unit: "reseptiin", section: 1 },
   leafParsley:           { name: "Lehtipersilja", unit: "reseptiin", section: 1 },
   freshChili:           { name: "Tuore chili", unit: "reseptiin", section: 1 },
+  cauliflower:           { name: "Kukkakaali", unit: "kpl", section: 1 },
   
 
   // SECTION 2
   oatsCream:             { name: "Kaurakerma", unit: "dl", section: 2 },
+  frenchOatsCream:       { name: "Kauraranskankerma", unit: "dl", section: 2 },
+  cheeseOatsCream:       { name: "Juustonmakuinen kaurakerma", unit: "dl", section: 2 },
   milk:                  { name: "Maito", unit: "dl", section: 2 },
   cheese:                { name: "Juusto", unit: "pkt", section: 2 },
   plantbasedParmesan:    { name: "Kasvipohjainen parmesaani", unit: "reseptiin", section: 2 },
   butter:                  { name: "Voi", unit: "dl", section: 2 }, 
-  turmericPowder:                  { name: "Kurkumajauhe", unit: "reseptiin", section: 2 },
-  gingerPowder:                  { name: "Inkiväärijauhe", unit: "reseptiin", section: 2 },
-  cajunSpice:                  { name: "Cajunmauste", unit: "reseptiin", section: 2 },
-  seaSalt:                  { name: "Merisuola", unit: "reseptiin", section: 2 },
+  
+
 
   // SECTION 3
   lentils:               { name: "Linssit", unit: "pkt", section: 3 },
+  chickpea:               { name: "Kikherne", unit: "pkt", section: 3 },
   soybeans:              { name: "Soijapavut", unit: "pkt", section: 3 },
   rice:                  { name: "Riisi", unit: "g", section: 3 },
   pasta:                 { name: "Pasta", unit: "g", section: 3 },
   oil:                   { name: "Öljy", unit: "dl", section: 3 },
+  oliveOil:                   { name: "Oliiviöljy", unit: "dl", section: 3 },
   soyMince:              { name: "Soijarouhe", unit: "dl", section: 3 },
   coconutCreamOrWhispCream:              { name: "Kookosmaito tai kuohukerma", unit: "dl", section: 3 },
   soySauce:              { name: "Soijakastike", unit: "dl", section: 3 },
@@ -315,7 +319,12 @@ const ingredientLibrary = {
   kidneyBeans:           { name: "Kidneypavut", unit: "pkt", section: 3 },
 
   // SECTION 4
-
+  turmericPowder:        { name: "Kurkumajauhe", unit: "reseptiin", section: 4 },
+  currySpice:            { name: "Currymauste", unit: "reseptiin", section: 4 },
+  indianSpiceMix:        { name: "Intialainen mausteseos", unit: "reseptiin", section: 4 },
+  gingerPowder:          { name: "Inkiväärijauhe", unit: "reseptiin", section: 4 },
+  cajunSpice:            { name: "Cajunmauste", unit: "reseptiin", section: 4 },
+  seaSalt:               { name: "Merisuola", unit: "reseptiin", section: 4 },
   salt:                  { name: "Suola", unit: "reseptiin", section: 4 },
   blackPepper:           { name: "Mustapippuri", unit: "reseptiin", section: 4 },
   chiliPowder:           { name: "Kuiva chili", unit: "reseptiin", section: 4 },
@@ -342,7 +351,7 @@ const ingredientLibrary = {
     */
     const recipes = [
       {
-        id: "paprika_pasta",
+        id: "cowboy_soup",
         name: "Cowboy-Keitto",
         servings: 6,
         source: {
@@ -544,7 +553,98 @@ const ingredientLibrary = {
 "Anna keiton kiehua noin 30 minuutin ajan miedolla lämmöllä ja lisää keittoon lopuksi kookosmaidon paksu osa. Anna keiton hautua kannen alla noin viiden minuutin ajan ennen kuin tarjoilua.",
 "Vinkki: Suola pyöristää ja korostaa keiton kaikkia makuja. Mikäli keitto maistuu valjulta, lisää merisuolaa asteittain, kunnes maku on kohdallaan."
         ]
-      }
+      },
+      {
+        id: "potato_curry_with_lentils",
+        name: "Perunacurry linsseillä",
+        servings: 4,
+        source: {
+          author: "",
+  url: ""
+},
+        ingredients: [
+          { ingredient: "potato", amount: 700 },
+          { ingredient: "oliveOil", amount: 0.5 },
+          { ingredient: "salt", amount: 1 },
+          { ingredient: "blackPepper", amount: 1 },
+          { ingredient: "redOnion", amount: 1 },
+          { ingredient: "garlic", amount: 3 },
+          { ingredient: "lentils", amount: 1 },
+          { ingredient: "currySpice", amount: 1 },
+          { ingredient: "paprikaPowder", amount: 1 },
+          { ingredient: "turmericPowder", amount: 1 },
+          { ingredient: "chiliPowder", amount: 1 },
+          { ingredient: "salt", amount: 1 },
+          { ingredient: "frenchOatsCream", amount: 1 },
+          { ingredient: "leafParsley", amount: 1 },
+          { ingredient: "lemonJuice", amount: 0.2 }
+        ],
+        displayIngredients: [
+"700 g perunoita",
+"Oliiviöljyä",
+"Suolaa ja pippuria",
+"1 punasipuli",
+"3 valkosipulinkynttä",
+"1 purkki (230 g) käyttövalmiita linssejä (meillä oli vihreitä kuivia linssejä 2-2.5dl)",
+"Mausteet: 2 tl currymaustetta",
+"1 tl paprikajauhetta",
+"0,5 tl kurkumaa",
+"0,5 tl chilirouhetta ja suolaa oman maun mukaan"
+        ],
+        instructions: [
+"Pilkotut perunat öljyn, suolan ja pippurin kans 225 asteiseen uuniin n. puoleksi tunniksi.",
+"Sillä välin paistetaan pannulla hienonnettu punasipuli, valkosipulinkynnet ja huuhdellut linssit. Maustetaan ja paistellaan, kunnes sipuli kypsää. Lisätään vielä kauraranskankerma, lehtipersilja ja sitruunamehu.",
+"Sekoitetaan kastike perunoiden joukkoon."
+        ]
+      },
+ {
+        id: "cauliflowerChickpeaIndianSoup",
+        name: "Intialainen kukkakaali-kikherne keitto",
+        servings: 4,
+        source: {
+  author: "",
+  url: ""
+},
+        ingredients: [
+          { ingredient: "cauliflower", amount: 1 },
+          { ingredient: "onion", amount: 1 },
+          { ingredient: "potato", amount: 100 },
+          { ingredient: "garlic", amount: 10 },
+          { ingredient: "chickpea", amount: 1 },
+          { ingredient: "oil", amount: 1 },
+          { ingredient: "turmericPowder", amount: 1 },
+          { ingredient: "indianSpiceMix", amount: 1 },
+          { ingredient: "gingerPowder", amount: 1 },
+          { ingredient: "salt", amount: 1 },
+          { ingredient: "cheeseOatsCream", amount: 2 },
+          { ingredient: "vegetableStockCube", amount: 1 },
+          { ingredient: "leafParsley", amount: 1 }
+        ],
+        displayIngredients: [
+"1 iso kukkakaali tai 2 pientä",
+"1 sipuli",
+"1 iso peruna tai muutama pieni",
+"1 kokonainen valkosipuli",
+"1 purkki (230 g) kikherneitä ",
+"rypsiöljyä",
+"1/2 tl kurkumaa",
+"1-1,5 tl intialaista mausteseosta",
+"1/2 tl inkiväärijauhetta",
+"suolaa oman maun mukaan",
+"1 purkki juustonmakuista kaurakermaa",
+"4 dl kasvislientä (4 dl vettä + 1 kasvisliemikuutio) ",
+"lehtipersiljaa"
+        ],
+
+      instructions: [
+"Kaada uunivuokaan (tai pellille) pilkottu kukkakaali ja peruna sekä puolitettu sipuli. Leikkaa valkosipulista kärkiosa pois ja asettele vuokaan. ",
+"Lisää myös kikherneet (ilman nesteitä) ja kaada päälle runsaasti öljyä. Lisää vielä mausteet ja sekoittele ainekset. Paahda 220 asteisessa uunissa n. 30 min / kunnes kasvikset ovat pehmenneet.",
+"Laita blenderiin paahdetut kasvikset ja suunnilleen 2/3 kikherneistä (loput laitetaan keiton päälle kokonaisina). Kaada blenderiin myös purkki kaurakermaa sekä kasvisliemi. Surauttele tasaiseksi ja kaada kattilaan. Halutessasi kiehauta vielä kuumemmaksi.",
+"Koristele annokset paahdetuilla kikherneillä sekä lehtipersiljalla-la-la-laa."
+          ]
+        
+          
+      },
     ];
 
     function formatAmount(amount) {
