@@ -244,7 +244,7 @@
   <h2>View recipe</h2>
 
   <select id="recipeViewer"></select>
-
+  <p id="recipeServings"></p>
   <h3>Ainekset</h3>
   <ul id="recipeIngredients"></ul>
 
@@ -344,6 +344,7 @@ const ingredientLibrary = {
       {
         id: "paprika_pasta",
         name: "Cowboy-Keitto",
+        servings: 6,
         source: {
   author: "Kasviskapina",
   url: "https://www.kasviskapina.fi/reseptit/cowboy-keitto"
@@ -398,6 +399,7 @@ const ingredientLibrary = {
             {
         id: "kidney_bean_tomato_soup",
         name: "Kidneypapu-Tomaattikeitto",
+        servings: 4,
         source: {
   author: "Kasviskapina",
   url: "https://www.kasviskapina.fi/reseptit/kidneypapu-tomaattikeitto"
@@ -448,6 +450,7 @@ const ingredientLibrary = {
       {
         id: "marry_me_lentil_soup",
         name: "Marry me linssikeitto",
+        servings: 6,
         source: {
           author: "Kasviskapina",
   url: "https://www.kasviskapina.fi/reseptit/marry-me-linssikeitto"
@@ -462,7 +465,7 @@ const ingredientLibrary = {
           { ingredient: "paprikaPowder", amount: 1 },
           { ingredient: "tomatoPaste", amount: 2 },
           { ingredient: "vegetableStockCube", amount: 2 },
-          { ingredient: "redLentils", amount: 1 },
+          { ingredient: "dryRedLentils", amount: 2.5 },
           { ingredient: "oatsCream", amount: 2.5 },
           { ingredient: "salt", amount: 1 },
           { ingredient: "blackPepper", amount: 1 },
@@ -504,6 +507,7 @@ const ingredientLibrary = {
       {
         id: "worlds_best_lentils_soup",
         name: "Maailman paras linssikeitto",
+        servings: 4,
         source: {
           author: "Hannamari Rahkonen",
   url: "https://hannamarirahkonen.fi/reseptit/maailman-paras-linssikeitto/"
