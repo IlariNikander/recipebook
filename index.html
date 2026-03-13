@@ -708,10 +708,16 @@ function showRecipe(recipeId) {
   const ingredientList = document.getElementById("recipeIngredients");
   const instructionList = document.getElementById("recipeInstructions");
   const sourceEl = document.getElementById("recipeSource");
-
+  const servingsEl = document.getElementById("recipeServings");
+  
   ingredientList.innerHTML = "";
   instructionList.innerHTML = "";
   sourceEl.innerHTML = "";
+  servingsEl.textContent = "";
+
+  if (recipe.servings) {
+  servingsEl.textContent = `Servings: ${recipe.servings}`;
+}
 
   (recipe.displayIngredients || []).forEach((item) => {
     const li = document.createElement("li");
