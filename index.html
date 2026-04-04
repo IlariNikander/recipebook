@@ -271,16 +271,19 @@
     */
 const ingredientLibrary = {
   // SECTION 1
+  carrot:               { name: "Porkkana", unit: "g", section: 1 },
   paprika:               { name: "Paprika", unit: "g", section: 1 },
   potato:                { name: "Peruna", unit: "g", section: 1 },
   onion:                 { name: "Sipuli", unit: "kpl", section: 1 },
   redOnion:                 { name: "Punasipuli", unit: "kpl", section: 1 },
   garlic:                { name: "Valkosipuli", unit: "kynsi", section: 1 },
   freshChoriander:       { name: "Korianteri", unit: "reseptiin", section: 1 },
+  freshParsley:       { name: "Tuore persilja", unit: "reseptiin", section: 1 },
   freshBasil:         { name: "Tuore basilika", unit: "reseptiin", section: 1 },
   leafParsley:           { name: "Lehtipersilja", unit: "reseptiin", section: 1 },
   freshChili:           { name: "Tuore chili", unit: "reseptiin", section: 1 },
   cauliflower:           { name: "Kukkakaali", unit: "kpl", section: 1 },
+  freshGinger:           { name: "Tuore inkivääri", unit: "reseptiin", section: 1 },
   
 
   // SECTION 2
@@ -290,7 +293,8 @@ const ingredientLibrary = {
   milk:                  { name: "Maito", unit: "dl", section: 2 },
   cheese:                { name: "Juusto", unit: "pkt", section: 2 },
   plantbasedParmesan:    { name: "Kasvipohjainen parmesaani", unit: "reseptiin", section: 2 },
-  butter:                  { name: "Voi", unit: "dl", section: 2 }, 
+  butter:                  { name: "Voi", unit: "dl", section: 2 },
+  tofu:   { name: "Tofu", unit: "pkt", section: 2 },
   
 
 
@@ -317,6 +321,7 @@ const ingredientLibrary = {
   whiteBeans:            { name: "Valkoiset pavut", unit: "pkt", section: 3 },
   blackBeans:            { name: "Mustat pavut", unit: "pkt", section: 3 },
   kidneyBeans:           { name: "Kidneypavut", unit: "pkt", section: 3 },
+  coconutMilk:           { name: "Kookosmaito", unit: "pkt", section: 3 },
 
   // SECTION 4
   turmericPowder:        { name: "Kurkumajauhe", unit: "reseptiin", section: 4 },
@@ -328,13 +333,18 @@ const ingredientLibrary = {
   salt:                  { name: "Suola", unit: "reseptiin", section: 4 },
   blackPepper:           { name: "Mustapippuri", unit: "reseptiin", section: 4 },
   chiliPowder:           { name: "Kuiva chili", unit: "reseptiin", section: 4 },
+  chiliFlakes:           { name: "Chilihiutale", unit: "reseptiin", section: 4 },
   paprikaPowder:         { name: "Paprikajauhe", unit: "reseptiin", section: 4 },
   smokedPaprikaPowder:   { name: "Savupaprikajauhe", unit: "reseptiin", section: 4 },
   driedOregano:          { name: "Kuivattu oregano", unit: "reseptiin", section: 4 },
   herbesDeProvence:      { name: "Herbes de Provence", unit: "reseptiin", section: 4 },
   cheeseCumin:           { name: "Juustokumina", unit: "reseptiin", section: 4 },
   mincedChoriander:      { name: "Jauhettu korianteri", unit: "reseptiin", section: 4 },
-  mincedMeatSeasoning:   { name: "Jauhelihamauste", unit: "reseptiin", section: 4 }
+  mincedMeatSeasoning:   { name: "Jauhelihamauste", unit: "reseptiin", section: 4 },
+
+  // SECTION 5
+frozenPeas:   { name: "Pakaste herne", unit: "pkt", section: 4 },
+  
 };
 
     /*
@@ -644,6 +654,64 @@ const ingredientLibrary = {
           ]
         
           
+      },
+      ,
+      {
+        id: "chickenless_soup",
+        name: "Kanaton keitto (Curry-Tofukeitto)",
+        servings: 6,
+        source: {
+          author: "Kasviskapina",
+  url: "https://www.kasviskapina.fi/reseptit/kanaton-keitto"
+},
+        ingredients: [
+          { ingredient: "tofu", amount: 1 },
+          { ingredient: "oil", amount: 0.3 },
+          { ingredient: "onion", amount: 1 },
+          { ingredient: "garlic", amount: 3 },
+          { ingredient: "freshGinger", amount: 1 },
+          { ingredient: "potato", amount: 420 },
+          { ingredient: "carrot", amount: 130 },
+          { ingredient: "currySpice", amount: 1 },
+          { ingredient: "smokedPaprikaPowder", amount: 1 },
+          { ingredient: "vegetableStockCube", amount: 2 },
+          { ingredient: "coconutMilk", amount: 1 },
+          { ingredient: "frozenPeas", amount: 1 },
+          { ingredient: "lemonJuice", amount: 1 },
+          { ingredient: "salt", amount: 1 },
+          { ingredient: "blackPepper", amount: 1 },
+          { ingredient: "freshParsley", amount: 1 },
+		  { ingredient: "chiliFlakes", amount: 1 }
+           
+
+        ],
+        displayIngredients: [
+"1 pkt maustamatonta tofua tai Jalotofun maustettuja tofu paahtopaloja (n. 250-300 g)",
+"1 + 1 rkl öljyä",
+"1 sipuli",
+"3 valkosipulinkynttä",
+"1 rkl inkivääriä raastettuna",
+"6 keskikokoista perunaa",
+"2 porkkanaa",
+"1 rkl curry-jauhetta",
+"1 tl (savustettua) paprikajauhetta",
+"n. 7 dl kasvislientä",
+"400 ml kookosmaitoa",
+"150 g pakasteherneitä,
+"½ sitruunan mehu",
+"suolaa ja mustapippuria",
+"½ ruukkua tuoretta meiramia (tai persiljaa tai korianteria)",
+"chilihiutaleita"
+        ],
+              instructions: [
+"Jos käytät tavallista tofua, ota se pois paketista ja kääräise puhtaaseen keittiöpyyhkeeseen ja laita painon alle noin vartiksi. Revi käsin paloiksi. Paahtopalat voi käyttää sellaisenaan. Ruskista tofu ruokalusikallisessa öljyä ja siirrä sivuun odottamaan.",
+"Kuori ja hienonna sipuli ja valkosipulinkynnet. Kuori ja raasta inkivääri. Kuori ja kuutioi perunat, pese porkkanat hyvin ja leikkaa ne kolikoiksi (voit kuoria ne tietysti niin halutessasi).",
+"Kuumenna 1 rkl öljyä kattilassa ja kuullota sipulia viitisen minuuttia keskilämmöllä. Lisää valkosipuli, inkivääri, curryjauhe ja paprikajauhe, kuullota vielä pari minuuttia. Sekoita joukkoon perunat ja porkkanat.",
+"Lisää kasvisliemi ja kuumenna keitto kiehuvaksi. Keitä kevyesti poreillen noin 15 minuuttia, kunnes vihannekset alkavat olla kypsiä.",
+"Lisää keittoon tofu, kookosmaito ja herneet. Kuumenna taas kiehuvaksi ja anna herneiden kypsyä pari minuuttia.",
+"Mausta keitto sitruunan mehulla, suolalla ja mustapippurilla. Viimeistele tuoreella hienonnetulla yrtillä.",
+"Annoksiin voi halutessaan lisätä hieman chilihiutaleita, ne antavat keitolle viimeisen säväyksen."
+              ]
       },
     ];
 
